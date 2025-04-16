@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_slide_slide_form_inherit_watermark" model="ir.ui.view">
+        <field name="name">slide.slide.form.inherit.watermark</field>
+        <field name="model">slide.slide</field>
+        <field name="inherit_id" ref="website_slides.view_slide_slide_form"/>
+        <field name="arch" type="xml">
+            <field name="slide_resource_downloadable" position="after">
+                <field name="watermark_enabled"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <template id="embed_slide_watermark_download" inherit_id="website_slides.embed_slide" name="Custom PDF Download with Watermark">
+      <xpath expr="//a[@id='download']" position="replace">
+        <a t-if="slide.slide_resource_downloadable"
+           id="download"
+           t-attf-href="/my/slide/download/#{slide.id}"
+           class="ms-1 ms-sm-2"
+           title="Download PDF with Watermark"
+           aria-label="Download PDF with Watermark"
+           role="button">
+           <i class="fa fa-download"/>
+        </a>
+      </xpath>
+    </template>
+  </odoo>

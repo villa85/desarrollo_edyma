@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="edyma_custom_pos_ticket.ReceiptHeader" t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension">
+
+        <!-- Reemplazar el contenido del div pos-receipt-contact con todo el contenido estilizado e integrado -->
+        <xpath expr="//div[@class='pos-receipt-contact']" position="replace">
+            <div class="pos-receipt-contact" style=" font-size: 16px;">
+                    <!-- Datos generales -->
+                    <div t-if="props.data.company.partner_id?.[1]" t-esc="props.data.company.partner_id[1]" />
+                    <t t-if="props.data.company.phone">
+                        <div>Tel:<t t-esc="props.data.company.phone" /></div>
+                    </t>
+                    <t t-if="props.data.company.vat">
+                        <div><t t-esc="props.data.company.country?.vat_label || 'Tax ID'" />: <t t-esc="props.data.company.vat" /></div>
+                    </t>
+                    <div t-if="props.data.company.email" t-esc="props.data.company.email" />
+                    <div t-if="props.data.company.website" t-esc="props.data.company.website" />
+
+                    <!-- Header personalizado -->
+                    <div t-if="props.data.header" style="white-space:pre-line; font-weight: bold; font-size: 15px;" t-esc="props.data.header" />
+
+                    <!-- Cajero -->
+                    <div t-if="props.data.cashier" class="cashier">
+                        <div>--------------------------------</div>
+                        <div>Served by <t t-esc="props.data.cashier" /></div>
+                    </div>
+
+                    <!-- Tracking -->
+                    <div class="fw-bolder" t-if="props.data.trackingNumber and !props.data.bigTrackingNumber">
+                        <span class="fs-2" t-esc="props.data.trackingNumber" />
+                    </div>
+
+            </div>
+        </xpath>
+    </t>
+</templates>

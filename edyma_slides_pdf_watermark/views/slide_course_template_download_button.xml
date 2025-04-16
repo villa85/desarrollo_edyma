@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <template id="slide_course_slide_download_button" inherit_id="website_slides.course_slides_list_slide" name="Add Download Button to Slide">
+    <xpath expr="//div[contains(@class, 'text-truncate me-auto')]" position="after">
+      <t t-if="slide.slide_category == 'document' and slide.source_type == 'local_file' and slide.slide_resource_downloadable">
+        <a t-att-href="'/my/slide/download/%s' % slide.id"
+           class="badge text-bg-primary fw-normal px-2 py-1 ms-2"
+           title="Download PDF with watermark">
+          <i class="fa fa-download me-1"/> Download
+        </a>
+      </t>
+    </xpath>
+  </template>
+</odoo>
