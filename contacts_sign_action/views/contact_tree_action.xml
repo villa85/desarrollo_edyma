@@ -1,0 +1,29 @@
+<odoo>
+    <!-- Acción que abre el wizard -->
+    <record id="action_open_sign_template_wizard" model="ir.actions.act_window">
+        <field name="name">Send for signature</field>
+        <field name="res_model">sign.contact.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_contact_ids': active_ids}</field>
+    </record>
+
+    <!-- Acción en el árbol de contactos -->
+    <record id="action_sign_template_mass" model="ir.actions.server">
+        <field name="name">Send document to sign</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">tree</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_window',
+                'name': 'Send for signature',
+                'res_model': 'sign.contact.wizard',
+                'view_mode': 'form',
+                'target': 'new',
+                'context': {'default_contact_ids': records.ids},
+            }
+        </field>
+    </record>
+</odoo>

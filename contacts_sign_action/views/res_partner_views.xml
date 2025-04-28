@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_partner_form_contract_to_send" model="ir.ui.view">
+        <field name="name">res.partner.form.contract.to.send</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="contract_to_send"/>
+            </field>
+        </field>
+    </record>
+</odoo>
